@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Fonts ── */
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Outfit";
+  src: url("/assets/fonts/Outfit.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Shiv Seva Kendra – Deep Navy + Amber Gold palette */
+    /* Navy base */
+    --background: 0.96 0.008 250;
+    --foreground: 0.18 0.04 255;
+
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.04 255;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.04 255;
+
+    /* Deep navy primary */
+    --primary: 0.22 0.065 255;
+    --primary-foreground: 0.97 0.005 250;
+
+    --secondary: 0.93 0.015 255;
+    --secondary-foreground: 0.22 0.065 255;
+
+    --muted: 0.93 0.01 250;
+    --muted-foreground: 0.52 0.025 255;
+
+    /* Amber gold accent */
+    --accent: 0.78 0.16 72;
+    --accent-foreground: 0.15 0.04 255;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.015 255;
+    --input: 0.88 0.015 255;
+    --ring: 0.78 0.16 72;
+
+    /* Saffron/orange for WhatsApp green we override inline */
+    --whatsapp: 0.66 0.2 145;
+    --call-blue: 0.45 0.12 255;
+
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    --sidebar: 0.22 0.065 255;
+    --sidebar-foreground: 0.97 0.005 250;
+    --sidebar-primary: 0.78 0.16 72;
+    --sidebar-primary-foreground: 0.15 0.04 255;
+    --sidebar-accent: 0.3 0.08 255;
+    --sidebar-accent-foreground: 0.97 0.005 250;
+    --sidebar-border: 0.3 0.06 255;
+    --sidebar-ring: 0.78 0.16 72;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Geometric pattern background for header */
+.header-pattern {
+  background-image:
+    radial-gradient(circle at 25% 50%, oklch(0.32 0.085 255 / 0.6) 0%, transparent 60%),
+    radial-gradient(circle at 75% 20%, oklch(0.78 0.16 72 / 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 85% 80%, oklch(0.28 0.07 255 / 0.5) 0%, transparent 40%);
+}
+
+/* Decorative dot grid */
+.dot-grid {
+  background-image: radial-gradient(circle, oklch(0.78 0.16 72 / 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Service card hover shimmer */
+.service-card {
+  position: relative;
+  overflow: hidden;
+}
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    oklch(0.78 0.16 72 / 0) 0%,
+    oklch(0.78 0.16 72 / 0.06) 50%,
+    oklch(0.78 0.16 72 / 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.service-card:hover::before {
+  opacity: 1;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(0.93 0.01 250);
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.78 0.16 72 / 0.5);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.78 0.16 72 / 0.8);
+}
